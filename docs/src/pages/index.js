@@ -1,10 +1,21 @@
 import React from 'react';
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
+
+Sentry.init({
+  dsn: "https://528c4e04d6994d14ba1f9f671b7c801e@o519308.ingest.sentry.io/5629438",
+  integrations: [new Integrations.BrowserTracing()],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+});
 
 const features = [
   {
